@@ -1,12 +1,8 @@
-from dotenv import load_dotenv
 from groq import Groq
 import streamlit as st
 import os
 
-load_dotenv()
-
-api_key = os.getenv("GROQ_API_KEY")
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+client = Groq(api_key = st.secrets["GROQ_API_KEY"])
 
 def check_claim(claim):
     response = client.chat.completions.create(
